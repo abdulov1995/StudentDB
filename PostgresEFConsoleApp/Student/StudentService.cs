@@ -29,6 +29,9 @@ namespace PostgresEFConsoleApp
         {
             var student = context.Students.FirstOrDefault(s => s.Id == id);
             student.Name = updatedStudent.Name;
+            student.Age = updatedStudent.Age;
+            student.GPA = updatedStudent.GPA;
+
             context.Students.Update(student);
             context.SaveChanges();
         }

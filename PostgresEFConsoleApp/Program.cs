@@ -21,7 +21,9 @@ namespace ConsoleAppWithEF
 
             //var updatedStudent = new Student
             //{
-            //    Name = "Xalid",
+            //    Name = "Asif",
+            //    Age=30,
+            //    GPA=4,
             //    TeacherId = 1
             //};
             //studentService.Update(2, updatedStudent);
@@ -37,10 +39,10 @@ namespace ConsoleAppWithEF
             //                         $" GPA: {student.GPA}");
             //};
 
-            
-           
-           var student= studentService.GetById(1);
-           Console.WriteLine(student.Name);
+
+
+            ////var student= studentService.GetById(1);
+            ////Console.WriteLine(student.Name);
 
         }
     }
