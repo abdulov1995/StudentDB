@@ -49,10 +49,12 @@ namespace ConsoleAppWithEF
             //var students = studentService.GetAll();
             //foreach (var student in students)
             //{
-            //    Console.WriteLine($"Student ID: {student.Id},"+
-            //                         $" Name: {student.Name},"+
-            //                         $"Age: {student.Age},"+
+            //    Console.WriteLine($"Student ID: {student.Id}," +
+            //                         $" Name: {student.Name}," +
+            //                         $"Age: {student.Age}," +
             //                         $" GPA: {student.GPA}");
+
+            //    Console.WriteLine("Teacher name is " +  student.Teacher.Name);
             //};
 
             //var teachers = teacherService.GetAll();
@@ -71,11 +73,9 @@ namespace ConsoleAppWithEF
 
             // teacherService.Delete(2);
 
-            ////var student= studentService.GetById(1);
-            ////Console.WriteLine(student.Name);
-           
-
-
+            //var student = studentService.GetById(1);
+            //Console.WriteLine($" Student name  is {student.Name} \n " +
+            //                  $"This student's teacher name is {student.Teacher.Name}");
 
             //var teacher = teacherService.GetById(1);
             //Console.WriteLine(teacher.Name);

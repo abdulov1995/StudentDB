@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+
 
 
 namespace PostgresEFConsoleApp
@@ -12,12 +14,12 @@ namespace PostgresEFConsoleApp
         AppDbContext context = new();
         public Student GetById(int studentId)
         {
-            var student = context.Students.FirstOrDefault(s => s.Id == studentId);
+            var student = context.Students.Include(s => s.Teacher).FirstOrDefault(s => s.Id == studentId);
             return student;
         }
         public List<Student> GetAll()
         {
-            var students = context.Students.ToList();
+            var students = context.Students.Include(s=>s.Teacher).ToList();
             return students;
         }
         public void Create(Student student)
