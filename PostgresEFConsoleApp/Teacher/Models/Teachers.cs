@@ -8,6 +8,8 @@ public class Teacher
     [Required]
     public string Name { get; set; }
     public string Subject { get; set; }
+    [Required]
+    public int StudentId { get; set; }
 
-    public ICollection<Student> Students { get; set; } 
+    public ICollection<TeacherStudent> TeacherStudents { get; set; }
 }

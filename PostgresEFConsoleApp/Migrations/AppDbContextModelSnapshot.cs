@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using PostgresEFConsoleApp;
 
-namespace PostgresEFConsoleApp.Migrations
+namespace StudentDB.Migrations
 {
     [DbContext(typeof(AppDbContext))]
     partial class AppDbContextModelSnapshot : ModelSnapshot
@@ -41,8 +41,6 @@ namespace PostgresEFConsoleApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TeacherId");
-
                     b.ToTable("Students");
                 });
 
@@ -57,28 +55,59 @@ namespace PostgresEFConsoleApp.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
+                    b.Property<int>("StudentId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Subject")
                         .HasColumnType("text");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Teacher");
+                    b.ToTable("Teachers");
                 });
 
-            modelBuilder.Entity("Student", b =>
+            modelBuilder.Entity("TeacherStudent", b =>
                 {
+                    b.Property<int>("TeacherId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("StudentId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("TeacherId", "StudentId");
+
+                    b.HasIndex("StudentId");
+
+                    b.ToTable("TeacherStudents");
+                });
+
+            modelBuilder.Entity("TeacherStudent", b =>
+                {
+                    b.HasOne("Student", "Student")
+                        .WithMany("TeacherStudents")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Teacher", "Teacher")
-                        .WithMany("Students")
+                        .WithMany("TeacherStudents")
                         .HasForeignKey("TeacherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.Navigation("Student");
+
                     b.Navigation("Teacher");
+                });
+
+            modelBuilder.Entity("Student", b =>
+                {
+                    b.Navigation("TeacherStudents");
                 });
 
             modelBuilder.Entity("Teacher", b =>
                 {
-                    b.Navigation("Students");
+                    b.Navigation("TeacherStudents");
                 });
 #pragma warning restore 612, 618
         }
