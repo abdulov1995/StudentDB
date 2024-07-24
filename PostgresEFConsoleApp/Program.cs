@@ -13,15 +13,20 @@ namespace ConsoleAppWithEF
         {
 
             TeacherStudentService teacherStudentService = new TeacherStudentService();
+            StudentService studentService = new StudentService();
+            TeacherService teacherService = new TeacherService();
 
-            //var newTeacher = new Teacher { Name = "Mirze", Subject = "Fizika",StudentId=1};
-            //var newStudent = new Student { Name = "Ferid", Age = 29, GPA = 5, TeacherId = 1 }; 
-            //var teacherStudent = new TeacherStudent
-            //{
-            //    Teacher = newTeacher,
-            //    Student = newStudent
-            //};
-            //teacherStudentService.Create(teacherStudent);
+            var newTeacher = new Teacher { Name = "Mirze", Subject = "Fizika" };
+            teacherService.Create(newTeacher);
+            var newStudent = new Student {  Name = "Ferid", Age = 29, GPA = 5 };
+            studentService.Create(newStudent);
+
+            var teacherStudent = new TeacherStudent
+            {
+                TeacherId = newTeacher.Id,
+                StudentId = newStudent.Id
+            };
+            teacherStudentService.Create(teacherStudent);
 
 
             //var teacherStudent = teacherStudentService.GetTeacherStudents();
@@ -47,32 +52,31 @@ namespace ConsoleAppWithEF
             //teacherStudentService.Delete(3);
 
 
-           
-            var updatedTeacher = new Teacher { Name = "Aysel", Subject = "Cografiya" };
-            var updatedStudent = new Student { Name = "Cingiz", Age = 25 };
-            var teacherStudent = new TeacherStudent
-            {
-                Teacher= updatedTeacher,
-                Student= updatedStudent
-            };
-            teacherStudentService.Update(1, 1, teacherStudent);
+
+            //var updatedTeacher = new Teacher { Name = "Aysel", Subject = "Cografiya" };
+            //var updatedStudent = new Student { Name = "Cingiz", Age = 25 };
+            //var teacherStudent = new TeacherStudent
+            //{
+            //    Teacher = updatedTeacher,
+            //    Student = updatedStudent
+            //};
+            //teacherStudentService.Update(1, 1, teacherStudent);
 
 
 
-           // StudentService studentService = new StudentService();
-            //TeacherService teacherService = new TeacherService();
+
             //var newStudent = new Student
             //{
-            //    Name = "Kamal",
-            //    TeacherId = 1
+            //    Name = "Rauf",
+            //    Age=28,
+
             //};
             //studentService.Create(newStudent);
 
             //var newTeacher = new Teacher
             //{
-            //    Id = 2,
-            //    Name = "Irade",
-            //    Subject = "English2"
+            //    Name = "Arzu",
+            //    Subject = "English"
             //};
             //teacherService.Create(newTeacher);
 

@@ -16,21 +16,20 @@ namespace PostgresEFConsoleApp
         }
 
 
+        //protected override void OnModelCreating(ModelBuilder modelBuilder)
+        //{
+        //    modelBuilder.Entity<TeacherStudent>()
+        //        .HasKey(ts => new { ts.TeacherId, ts.StudentId });
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<TeacherStudent>()
-                .HasKey(ts => new { ts.TeacherId, ts.StudentId });
+        //    modelBuilder.Entity<TeacherStudent>()
+        //        .HasOne(ts => ts.Teacher)
+        //        .WithMany(t => t.TeacherStudents)
+        //        .HasForeignKey(ts => ts.TeacherId);
 
-            modelBuilder.Entity<TeacherStudent>()
-                .HasOne(ts => ts.Teacher)
-                .WithMany(t => t.TeacherStudents)
-                .HasForeignKey(ts => ts.TeacherId);
-
-            modelBuilder.Entity<TeacherStudent>()
-                .HasOne(ts => ts.Student)
-                .WithMany(s => s.TeacherStudents)
-                .HasForeignKey(ts => ts.StudentId);
-        }
+        //    modelBuilder.Entity<TeacherStudent>()
+        //        .HasOne(ts => ts.Student)
+        //        .WithMany(s => s.TeacherStudents)
+        //        .HasForeignKey(ts => ts.StudentId);
+        //}
     }
 }

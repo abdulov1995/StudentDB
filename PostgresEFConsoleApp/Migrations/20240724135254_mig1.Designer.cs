@@ -10,8 +10,8 @@ using PostgresEFConsoleApp;
 namespace StudentDB.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20240722132549_Mig1")]
-    partial class Mig1
+    [Migration("20240724135254_mig1")]
+    partial class mig1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -70,15 +70,22 @@ namespace StudentDB.Migrations
 
             modelBuilder.Entity("TeacherStudent", b =>
                 {
-                    b.Property<int>("TeacherId")
-                        .HasColumnType("integer");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .UseIdentityByDefaultColumn();
 
                     b.Property<int>("StudentId")
                         .HasColumnType("integer");
 
-                    b.HasKey("TeacherId", "StudentId");
+                    b.Property<int>("TeacherId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
 
                     b.HasIndex("StudentId");
+
+                    b.HasIndex("TeacherId");
 
                     b.ToTable("TeacherStudents");
                 });

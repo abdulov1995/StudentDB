@@ -3,7 +3,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace StudentDB.Migrations
 {
-    public partial class Mig1 : Migration
+    public partial class mig1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -42,12 +42,14 @@ namespace StudentDB.Migrations
                 name: "TeacherStudents",
                 columns: table => new
                 {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     TeacherId = table.Column<int>(type: "integer", nullable: false),
                     StudentId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TeacherStudents", x => new { x.TeacherId, x.StudentId });
+                    table.PrimaryKey("PK_TeacherStudents", x => x.Id);
                     table.ForeignKey(
                         name: "FK_TeacherStudents_Students_StudentId",
                         column: x => x.StudentId,
@@ -66,6 +68,11 @@ namespace StudentDB.Migrations
                 name: "IX_TeacherStudents_StudentId",
                 table: "TeacherStudents",
                 column: "StudentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_TeacherStudents_TeacherId",
+                table: "TeacherStudents",
+                column: "TeacherId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

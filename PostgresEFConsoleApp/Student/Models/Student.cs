@@ -9,8 +9,6 @@ public class Student
     public string Name { get; set; }
     public int Age { get; set; }
     public decimal? GPA { get; set; }
-    [Required]
-    public int TeacherId { get; set; }
 
     public ICollection<TeacherStudent> TeacherStudents { get; set; }
 }
