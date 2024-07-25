@@ -13,20 +13,20 @@ namespace ConsoleAppWithEF
         {
 
             TeacherStudentService teacherStudentService = new TeacherStudentService();
-            StudentService studentService = new StudentService();
-            TeacherService teacherService = new TeacherService();
+            //StudentService studentService = new StudentService();
+            //TeacherService teacherService = new TeacherService();
 
-            var newTeacher = new Teacher { Name = "Mirze", Subject = "Fizika" };
-            teacherService.Create(newTeacher);
-            var newStudent = new Student {  Name = "Ferid", Age = 29, GPA = 5 };
-            studentService.Create(newStudent);
+            //var newTeacher = new Teacher { Name = "Mirze", Subject = "Fizika" };
+            //teacherService.Create(newTeacher);
+            //var newStudent = new Student {  Name = "Ferid", Age = 29, GPA = 5 };
+            //studentService.Create(newStudent);
 
-            var teacherStudent = new TeacherStudent
-            {
-                TeacherId = newTeacher.Id,
-                StudentId = newStudent.Id
-            };
-            teacherStudentService.Create(teacherStudent);
+            //var teacherStudent = new TeacherStudent
+            //{
+            //    TeacherId = newTeacher.Id,
+            //    StudentId = newStudent.Id
+            //};
+            //teacherStudentService.Create(teacherStudent);
 
 
             //var teacherStudent = teacherStudentService.GetTeacherStudents();
@@ -49,8 +49,8 @@ namespace ConsoleAppWithEF
             //    Console.WriteLine();
             //}
 
-            //teacherStudentService.Delete(3);
-
+            //teacherStudentService.Delete(0,11);
+            
 
 
             //var updatedTeacher = new Teacher { Name = "Aysel", Subject = "Cografiya" };
